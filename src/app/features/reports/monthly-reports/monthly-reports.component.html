@@ -7,6 +7,7 @@
     </ol>
   </nav>
 </div>
+
 <section class="section">
   <div class="row">
     <div class="col-lg-12">
@@ -18,21 +19,25 @@
           <div class="row g-3">
             <div class="col-md-6">
               <label>Select Report</label>
-              <select class="form-select" [(ngModel)]="selectedReport" id="inputState">
+              <select class="form-select" [(ngModel)]="selectedReport" id="inputState" name="selectedReport" required>
+                <option value="" disabled selected>Select a report</option>
                 <option value="Sales Summary">Sales Summary</option>
                 <option value="Purchases Summary">Purchases Summary</option>
                 <option value="Salary Payments">Salary Payments</option>
                 <option value="Production Summary">Production Summary</option>
                 <option value="Farm Summary">Farm Summary</option>
               </select>
+              <div *ngIf="!selectedReport" class="text-danger">Please select a report.</div>
               <div class="row">
                 <div class="col-md-6">
                   <label>Start Date / From</label>
-                  <input class="form-control" type="date" [(ngModel)]="startDate" placeholder="Start Date">
+                  <input class="form-control" type="date" [(ngModel)]="startDate" name="startDate" placeholder="Start Date" required>
+                  <div *ngIf="!startDate" class="text-danger">Start date is required.</div>
                 </div>
                 <div class="col-md-6">
                   <label>End Date / To</label>
-                  <input class="form-control" type="date" [(ngModel)]="endDate" placeholder="End Date">
+                  <input class="form-control" type="date" [(ngModel)]="endDate" name="endDate" placeholder="End Date" required>
+                  <div *ngIf="!endDate" class="text-danger">End date is required.</div>
                 </div>
               </div>
             </div>
